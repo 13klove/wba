@@ -1,5 +1,6 @@
 package web.boostcourse.api.wba.user.model.entity;
 
+import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,6 @@ public class User extends BaseDate {
     private String phone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<UserRole> userRoles;
+    private List<UserRole> userRoles = Lists.newArrayList();
 
 }

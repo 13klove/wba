@@ -23,7 +23,7 @@ public class UserRole {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private User user;
 
 }
