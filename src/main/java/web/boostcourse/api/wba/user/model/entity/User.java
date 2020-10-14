@@ -4,8 +4,9 @@ import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
+import web.boostcourse.api.wba.reservatioinUserComment.model.entity.ReservationUserComment;
+import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
 import web.boostcourse.api.wba.userRole.model.entity.UserRole;
 
 import javax.persistence.*;
@@ -30,5 +31,11 @@ public class User extends BaseDate {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserRole> userRoles = Lists.newArrayList();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<ReservationUserComment> reservationUserComments = Lists.newArrayList();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<ReservationInfo> reservationInfos = Lists.newArrayList();
 
 }

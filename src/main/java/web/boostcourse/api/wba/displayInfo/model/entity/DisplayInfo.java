@@ -10,13 +10,14 @@ import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfoImage.model.entity.DisplayInfoImage;
 import web.boostcourse.api.wba.product.model.entity.Product;
 import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
+import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
 @Entity
-@Table(name = "product")
+@Table(name = "display_info")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class DisplayInfo extends BaseDate {
 
@@ -51,5 +52,8 @@ public class DisplayInfo extends BaseDate {
 
     @OneToMany(mappedBy = "displayInfo")
     private List<DisplayInfoImage> DisplayInfoImages = Lists.newArrayList();
+
+    @OneToMany(mappedBy = "reservationInfo")
+    private List<ReservationInfo> reservationInfos = Lists.newArrayList();
 
 }

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfoImage.model.entity.DisplayInfoImage;
 import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
+import web.boostcourse.api.wba.reservationUserCommentImage.model.entity.ReservationUserCommentImage;
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,5 +36,8 @@ public class FileInfo extends BaseDate {
 
     @OneToMany(mappedBy = "fileInfo")
     private List<DisplayInfoImage> displayInfoImages = Lists.newArrayList();
+
+    @OneToMany(mappedBy = "fileInfo")
+    private List<ReservationUserCommentImage> reservationUserCommentImages = Lists.newArrayList();
 
 }

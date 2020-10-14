@@ -12,6 +12,7 @@ import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfo.model.entity.DisplayInfo;
 import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
 import web.boostcourse.api.wba.productPrice.model.entity.ProductPrice;
+import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
 
 import javax.persistence.*;
 import java.util.List;
@@ -51,4 +52,6 @@ public class Product extends BaseDate {
     @OneToMany(mappedBy = "product")
     private List<ProductPrice> productPrices = Lists.newArrayList();
 
+    @OneToMany(mappedBy = "product")
+    private List<ReservationInfo> reservationInfos = Lists.newArrayList();
 }
