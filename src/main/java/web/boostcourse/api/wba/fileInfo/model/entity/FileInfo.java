@@ -1,12 +1,15 @@
 package web.boostcourse.api.wba.fileInfo.model.entity;
 
+import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
+import web.boostcourse.api.wba.displayInfoImage.model.entity.DisplayInfoImage;
 import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -27,7 +30,10 @@ public class FileInfo extends BaseDate {
 
     private Boolean deleteFlag;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private ProductImage productImage;
+    @OneToMany(mappedBy = "fileInfo")
+    private List<ProductImage> productImages = Lists.newArrayList();
+
+    @OneToMany(mappedBy = "fileInfo")
+    private List<DisplayInfoImage> displayInfoImages = Lists.newArrayList();
 
 }

@@ -5,10 +5,13 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 import web.boostcourse.api.wba.category.model.entity.Category;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfo.model.entity.DisplayInfo;
 import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
+import web.boostcourse.api.wba.productPrice.model.entity.ProductPrice;
 
 import javax.persistence.*;
 import java.util.List;
@@ -38,10 +41,14 @@ public class Product extends BaseDate {
 //    @OneToOne(fetch = FetchType.LAZY, mappedBy = "product", optional = false)
 //    @LazyToOne(LazyToOneOption.NO_PROXY)
 //    @JoinColumn(name = "product_id")
+//    private DisplayInfo displayInfo;
     @OneToMany(mappedBy = "product")
     private List<DisplayInfo> displayInfos = Lists.newArrayList();
 
     @OneToMany(mappedBy = "product")
     private List<ProductImage> productImages = Lists.newArrayList();
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductPrice> productPrices = Lists.newArrayList();
 
 }

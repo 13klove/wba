@@ -1,15 +1,18 @@
 package web.boostcourse.api.wba.displayInfo.model.entity;
 
+import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
+import web.boostcourse.api.wba.displayInfoImage.model.entity.DisplayInfoImage;
 import web.boostcourse.api.wba.product.model.entity.Product;
 import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Entity
@@ -40,9 +43,13 @@ public class DisplayInfo extends BaseDate {
 //    @JoinColumn(name = "id")
 //    @LazyToOne(LazyToOneOption.NO_PROXY)
 //    @Column(name = "product_id")
+//    private Product product;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @Column(name = "product_id")
-    private Product product;
+    private List<Product> products = Lists.newArrayList();
+
+    @OneToMany(mappedBy = "displayInfo")
+    private List<DisplayInfoImage> DisplayInfoImages = Lists.newArrayList();
 
 }
