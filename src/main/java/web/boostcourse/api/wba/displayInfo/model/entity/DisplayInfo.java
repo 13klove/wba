@@ -4,12 +4,9 @@ import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfoImage.model.entity.DisplayInfoImage;
 import web.boostcourse.api.wba.product.model.entity.Product;
-import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
 import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
 
 import javax.persistence.*;
@@ -40,20 +37,15 @@ public class DisplayInfo extends BaseDate {
 
     private String email;
 
-//    @OneToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "id")
-//    @LazyToOne(LazyToOneOption.NO_PROXY)
-//    @Column(name = "product_id")
-//    private Product product;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @Column(name = "product_id")
-    private List<Product> products = Lists.newArrayList();
+    private Product product;
 
     @OneToMany(mappedBy = "displayInfo")
     private List<DisplayInfoImage> DisplayInfoImages = Lists.newArrayList();
 
-    @OneToMany(mappedBy = "reservationInfo")
+    @OneToMany(mappedBy = "displayInfo")
     private List<ReservationInfo> reservationInfos = Lists.newArrayList();
 
 }

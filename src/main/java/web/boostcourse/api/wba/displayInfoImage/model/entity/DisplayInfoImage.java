@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@Table(name = "product")
+@Table(name = "display_info_image")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class DisplayInfoImage {
 

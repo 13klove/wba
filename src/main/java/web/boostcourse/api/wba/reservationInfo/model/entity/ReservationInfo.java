@@ -8,6 +8,7 @@ import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfo.model.entity.DisplayInfo;
 import web.boostcourse.api.wba.product.model.entity.Product;
 import web.boostcourse.api.wba.reservatioinUserComment.model.entity.ReservationUserComment;
+import web.boostcourse.api.wba.reservationInfoPrice.model.entity.ReservationInfoPrice;
 import web.boostcourse.api.wba.reservationUserCommentImage.model.entity.ReservationUserCommentImage;
 import web.boostcourse.api.wba.user.model.entity.User;
 
@@ -45,12 +46,13 @@ public class ReservationInfo extends BaseDate {
     @Column(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "reservation_user_comment_id")
-    private ReservationUserComment reservationUserComment;
+    @OneToMany(mappedBy = "reservationInfo")
+    private List<ReservationUserComment> reservationUserComments = Lists.newArrayList();
 
     @OneToMany(mappedBy = "reservationInfo")
     private List<ReservationUserCommentImage> reservationUserCommentImages = Lists.newArrayList();
+
+    @OneToMany(mappedBy = "reservationInfo")
+    private List<ReservationInfoPrice> reservationInfoPrices = Lists.newArrayList();
 
 }

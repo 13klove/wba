@@ -3,8 +3,8 @@ package web.boostcourse.api.wba.userRole.model.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.user.model.entity.User;
+import web.boostcourse.api.wba.userRole.model.RoleName;
 
 import javax.persistence.*;
 
@@ -19,7 +19,8 @@ public class UserRole {
     @Column(name = "id")
     private Long id;
 
-    private String roleName;
+    @Enumerated(EnumType.STRING)
+    private RoleName roleName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")

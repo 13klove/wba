@@ -37,7 +37,7 @@ public class ReservationUserComment extends BaseDate {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @Column(name = "reservation_info_id")
-    private ReservationInfo ReservationInfo;
+    private ReservationInfo reservationInfo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")

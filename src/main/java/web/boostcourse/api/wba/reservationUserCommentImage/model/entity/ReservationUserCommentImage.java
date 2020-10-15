@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import web.boostcourse.api.wba.fileInfo.model.entity.FileInfo;
 import web.boostcourse.api.wba.reservatioinUserComment.model.entity.ReservationUserComment;
 import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
-import web.boostcourse.api.wba.user.model.entity.User;
 
 import javax.persistence.*;
-import java.io.File;
 
 @Getter
 @Entity
@@ -34,7 +32,7 @@ public class ReservationUserCommentImage {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
-    @Column(name = "file_info_if")
+    @Column(name = "file_info_id")
     private FileInfo fileInfo;
 
 }
