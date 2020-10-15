@@ -11,7 +11,7 @@ import web.boostcourse.api.wba.displayInfo.model.entity.DisplayInfo;
 import web.boostcourse.api.wba.productImage.model.entity.ProductImage;
 import web.boostcourse.api.wba.productPrice.model.entity.ProductPrice;
 import web.boostcourse.api.wba.promotion.model.entity.Promotion;
-import web.boostcourse.api.wba.reservatioinUserComment.model.entity.ReservationUserComment;
+import web.boostcourse.api.wba.reservationUserComment.model.entity.ReservationUserComment;
 import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
 
 import javax.persistence.*;
@@ -35,8 +35,7 @@ public class Product extends BaseDate {
     private String event;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @OneToMany(mappedBy = "product")

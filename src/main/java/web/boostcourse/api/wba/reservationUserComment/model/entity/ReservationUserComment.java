@@ -1,4 +1,4 @@
-package web.boostcourse.api.wba.reservatioinUserComment.model.entity;
+package web.boostcourse.api.wba.reservationUserComment.model.entity;
 
 import com.google.common.collect.Lists;
 import lombok.AccessLevel;
@@ -30,18 +30,15 @@ public class ReservationUserComment extends BaseDate {
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "product_id")
-    private Product products;
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "reservation_info_id")
+    @JoinColumn(name = "reservation_info_id")
     private ReservationInfo reservationInfo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "reservationUserComment")

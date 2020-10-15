@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfo.model.entity.DisplayInfo;
 import web.boostcourse.api.wba.product.model.entity.Product;
-import web.boostcourse.api.wba.reservatioinUserComment.model.entity.ReservationUserComment;
+import web.boostcourse.api.wba.reservationUserComment.model.entity.ReservationUserComment;
 import web.boostcourse.api.wba.reservationInfoPrice.model.entity.ReservationInfoPrice;
 import web.boostcourse.api.wba.reservationUserCommentImage.model.entity.ReservationUserCommentImage;
 import web.boostcourse.api.wba.user.model.entity.User;
@@ -32,18 +32,15 @@ public class ReservationInfo extends BaseDate {
     private Boolean cancelFlag;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "display_info_id")
+    @JoinColumn(name = "display_info_id")
     private DisplayInfo displayInfo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "reservationInfo")

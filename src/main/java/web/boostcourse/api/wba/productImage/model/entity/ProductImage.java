@@ -23,13 +23,11 @@ public class ProductImage {
     private ImageType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "file_id")
+    @JoinColumn(name = "file_id")
     private FileInfo fileInfo;
 
 }

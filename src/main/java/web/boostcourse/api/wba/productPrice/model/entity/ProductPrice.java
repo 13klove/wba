@@ -32,8 +32,7 @@ public class ProductPrice extends BaseDate {
     private BigDecimal discountRate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @OneToMany(mappedBy = "productPrice")

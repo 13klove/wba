@@ -5,7 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
-import web.boostcourse.api.wba.reservatioinUserComment.model.entity.ReservationUserComment;
+import web.boostcourse.api.wba.reservationUserComment.model.entity.ReservationUserComment;
 import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
 import web.boostcourse.api.wba.userRole.model.entity.UserRole;
 

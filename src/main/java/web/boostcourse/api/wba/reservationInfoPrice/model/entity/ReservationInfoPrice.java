@@ -23,13 +23,11 @@ public class ReservationInfoPrice {
     private Integer count;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "product_price_id")
+    @JoinColumn(name = "product_price_id")
     private ProductPrice productPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "reservation_info_id")
+    @JoinColumn(name = "reservation_info_id")
     private ReservationInfo reservationInfo;
 
 }

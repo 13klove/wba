@@ -20,13 +20,11 @@ public class DisplayInfoImage {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "display_info_id")
+    @JoinColumn(name = "display_info_id")
     private DisplayInfo displayInfo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    @Column(name = "file_id")
+    @JoinColumn(name = "file_id")
     private FileInfo fileInfo;
 
 }
