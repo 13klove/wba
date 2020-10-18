@@ -11,7 +11,6 @@ import web.boostcourse.api.wba.reservationUserCommentImage.model.entity.Reservat
 import web.boostcourse.api.wba.user.model.entity.User;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -25,7 +24,7 @@ public class ReservationUserComment extends BaseDate {
     @Column(name = "id")
     private Long id;
 
-    private BigDecimal score;
+    private Long score;
 
     private String comment;
 
