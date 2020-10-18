@@ -25,6 +25,8 @@ public class User extends BaseDate {
 
     private String name;
 
+    private String password;
+
     private String email;
 
     private String phone;

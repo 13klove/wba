@@ -20,6 +20,7 @@ public class ProductImage {
     @Column(name = "id")
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private ImageType type;
 
     @ManyToOne(fetch = FetchType.LAZY)

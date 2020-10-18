@@ -29,7 +29,7 @@ public class ReservationUserCommentImage {
     private ReservationInfo reservationInfo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "file_info_id")
+    @JoinColumn(name = "file_id")
     private FileInfo fileInfo;
 
 }
