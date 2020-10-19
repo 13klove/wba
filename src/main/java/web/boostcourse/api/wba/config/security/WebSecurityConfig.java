@@ -45,10 +45,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+    //todo
+    //cors 사용
+    //refresh token 적용
 //    @Bean
 //    public CorsConfigurationSource corsConfigurationSource() {
 //        //https://icarus8050.tistory.com/28
 //        //https://velog.io/@hellozin/Spring-API-%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-PUT-DELETE-%EC%9A%94%EC%B2%AD-%EC%8B%9C-CORS-%EC%84%A4%EC%A0%95%EC%9D%B4-%EC%A0%81%EC%9A%A9-%EC%95%88%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0
+    //리플레시토큰
+    //https://velog.io/@tlatldms/%EC%84%9C%EB%B2%84%EA%B0%9C%EB%B0%9C%EC%BA%A0%ED%94%84-Refresh-JWT-%EA%B5%AC%ED%98%84
+    //https://swalloow.github.io/implement-jwt/
 //        //.cors().configurationSource(corsConfigurationSource()).and()
 //        CorsConfiguration configuration = new CorsConfiguration();
 //
