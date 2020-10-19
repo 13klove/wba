@@ -37,7 +37,7 @@ public class ReservationUserCommentDtoRepositoryImpl extends CommonRepositoryImp
                 .join(reservationUserComment.user, user)
                 .where(whereProductId(productId))
                 .limit(pageable.getPageSize())
-                .offset(pageable.getPageNumber())
+                .offset(pageable.getOffset())
                 .fetchResults();
 
         return new PageImpl<>(reservationUserCommentResponseQueryResults.getResults(), pageable, reservationUserCommentResponseQueryResults.getTotal());

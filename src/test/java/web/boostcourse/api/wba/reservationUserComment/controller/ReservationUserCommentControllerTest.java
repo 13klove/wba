@@ -28,7 +28,7 @@ public class ReservationUserCommentControllerTest {
     public void getComments()throws Exception{
         MultiValueMap<String, String> param = new LinkedMultiValueMap<>();
         param.add("productId", "1");
-        param.add("start", "1");
+        param.add("page", "0");
 
         mockMvc.perform(get("/api/comments").params(param).contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())

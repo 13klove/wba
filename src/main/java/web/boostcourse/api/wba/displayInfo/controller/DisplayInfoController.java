@@ -2,6 +2,7 @@ package web.boostcourse.api.wba.displayInfo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ public class DisplayInfoController {
     private DisplayInfoService displayInfoService;
 
     @GetMapping("/displayinfos")
-    public DisplayInfosResponse getDisplayInfos(DisplayInfoSearch displayInfoSearch, Pageable pageable){
+    public DisplayInfosResponse getDisplayInfos(DisplayInfoSearch displayInfoSearch, @PageableDefault(size = 4) Pageable pageable){
         return displayInfoService.getDisplayInfos(displayInfoSearch, pageable);
     }
 

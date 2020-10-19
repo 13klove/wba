@@ -34,7 +34,7 @@ public class DisplayInfoDtoRepositoryImpl extends CommonRepositoryImpl implement
                 .leftJoin(displayInfo.DisplayInfoImages, displayInfoImage)
                 .where(whereCategoryId(displayInfoSearch.getCategoryId()))
                 .limit(pageable.getPageSize())
-                .offset(pageable.getPageNumber())
+                .offset(pageable.getOffset())
                 .fetchResults();
 
         return new PageImpl<>(displayInfoResponseQueryResults.getResults(), pageable, displayInfoResponseQueryResults.getTotal());

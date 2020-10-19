@@ -2,6 +2,7 @@ package web.boostcourse.api.wba.reservationUserComment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class ReservationUserCommentController {
     private ReservatioinUserCommentService reservatioinUserCommentService;
 
     @GetMapping("/comments")
-    public ReservationUserCommentsResponse getComments(ReservationUserCommentSearch reservationUserCommentSearch, Pageable pageable){
+    public ReservationUserCommentsResponse getComments(ReservationUserCommentSearch reservationUserCommentSearch, @PageableDefault(size = 5) Pageable pageable){
         return reservatioinUserCommentService.getComments(reservationUserCommentSearch.getProductId(), pageable);
     }
 
