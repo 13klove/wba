@@ -38,4 +38,8 @@ public class UserRole {
         return new UserRole(roleName);
     }
 
+    public void changeUser(User user){
+        this.user = user;
+    }
+
 }

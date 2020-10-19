@@ -50,11 +50,16 @@ public class User extends BaseDate implements UserDetails {
         this.password = password;
         this.email = email;
         this.phone = phone;
-        this.userRoles.add(userRole);
+        addUserRole(userRole);
     }
 
     public static User createUser(String name, String password, String email, String phone, UserRole userRole){
         return new User(name, password, email, phone, userRole);
+    }
+
+    public void addUserRole(UserRole userRole){
+        this.userRoles.add(userRole);
+        userRole.changeUser(this);
     }
 
     @Override

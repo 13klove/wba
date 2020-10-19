@@ -22,8 +22,6 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UserSearch userSearch){
-        return loginService.login(userSearch);
-    }
+    public String login(@RequestBody UserSearch userSearch){ return loginService.login(userSearch); }
 
 }

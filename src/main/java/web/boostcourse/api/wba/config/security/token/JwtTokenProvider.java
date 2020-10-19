@@ -10,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import web.boostcourse.api.wba.userRole.model.entity.UserRole;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +34,7 @@ public class JwtTokenProvider {
     }
 
     //create jwt token
-    public String createToken(String userPk, List<UserRole> roles){
+    public String createToken(String userPk, List<String> roles){
         Claims claims = Jwts.claims().setSubject(userPk);
         claims.put("roles", roles);
         Date now = new Date();
@@ -45,7 +44,7 @@ public class JwtTokenProvider {
                 .setClaims(claims)//정보저장
                 .setIssuedAt(now)//토큰 발행 시간
                 .setExpiration(new Date(now.getTime()+tokenValidTime))//유효기간
-                .signWith(SignatureAlgorithm.ES256, secretKey)//사용할 암호화 알고리즘, 소금
+                .signWith(SignatureAlgorithm.HS256, secretKey)//사용할 암호화 알고리즘, 소금
                 .compact();
     }
 

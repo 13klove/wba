@@ -13,6 +13,9 @@ import web.boostcourse.api.wba.user.repository.UserRepository;
 import web.boostcourse.api.wba.userRole.model.RoleName;
 import web.boostcourse.api.wba.userRole.model.entity.UserRole;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class LoginService {
 
@@ -25,17 +28,18 @@ public class LoginService {
 
     public UserResponse join(UserParam userParam){
         UserRole userRole = UserRole.createUserRole(RoleName.ROLE_USER);
-        User user = User.createUser(userParam.getName(), userParam.getPassword(), userParam.getEmail(), userParam.getPhone(), userRole);
+        User user = User.createUser(userParam.getName(), passwordEncoder.encode(userParam.getPassword()), userParam.getEmail(), userParam.getPhone(), userRole);
         userRepository.save(user);
         return UserResponse.builder().email(user.getEmail()).build();
     }
 
     public String login(@RequestBody UserSearch userSearch){
         User user = userRepository.findUserByEmail(userSearch.getEmail()).orElseThrow(()->new IllegalArgumentException("없는 이메일입니다."));
+        List<String> roles =  user.getUserRoles().stream().map(a->a.getRoleName().toString()).collect(Collectors.toList());
 
         if(!passwordEncoder.matches(userSearch.getPassword(), user.getPassword())) throw new IllegalArgumentException("잘못된 비밀번호입니다.");
 
-        return jwtTokenProvider.createToken(user.getEmail(), user.getUserRoles());
+        return jwtTokenProvider.createToken(user.getEmail(), roles);
     }
 
 }
