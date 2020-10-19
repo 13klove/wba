@@ -26,4 +26,16 @@ public class UserRole {
     @JoinColumn(name = "user_id")
     private User user;
 
+    protected UserRole(RoleName roleName) {
+        this.roleName = roleName;
+    }
+
+    public static UserRole createUserRole(String roleName){
+        return new UserRole(RoleName.valueOf(roleName));
+    }
+
+    public static UserRole createUserRole(RoleName roleName){
+        return new UserRole(roleName);
+    }
+
 }
