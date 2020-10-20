@@ -3,6 +3,7 @@ package web.boostcourse.api.wba.userRole.model.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import web.boostcourse.api.wba.user.model.entity.User;
 import web.boostcourse.api.wba.userRole.model.RoleName;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @Table(name = "user_role")
+@ToString(exclude = {"user"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserRole {
 

@@ -15,6 +15,7 @@ public class UserService {
     @Autowired
     private UserCoreService userCoreService;
 
+    @Transactional
     public UserResponse join(UserParam userParam){
         return userCoreService.join(userParam);
     }

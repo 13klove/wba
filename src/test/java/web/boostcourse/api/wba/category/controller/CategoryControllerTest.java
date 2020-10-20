@@ -21,10 +21,13 @@ public class CategoryControllerTest {
     MockMvc mockMvc;
     ObjectMapper objectMapper = new ObjectMapper();
 
+
     @Test
     @Transactional
+    //@WithMockUser(value = "ooo")
     public void getCategories() throws Exception{
         mockMvc.perform(get("/api/categories")
+                .header("X-AUTH-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvb28iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAzMTU4MzM4LCJleHAiOjE2MDMxNjAxMzh9.Yfe0XkIJnKpffTgzPeGv9bjkan3CnSjshsDtX4r2KMM")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andDo(print());

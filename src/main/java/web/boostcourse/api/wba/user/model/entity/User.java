@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 @Getter
 @Entity
 @Table(name = "user")
+@ToString(exclude = {"userRoles", "reservationUserComments", "reservationInfos"})
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends BaseDate implements UserDetails {
 
