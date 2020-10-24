@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,10 +25,10 @@ public class CategoryControllerTest {
 
     @Test
     @Transactional
-    //@WithMockUser(value = "ooo")
+    @WithMockUser
     public void getCategories() throws Exception{
         mockMvc.perform(get("/api/categories")
-                .header("X-AUTH-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvb28iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAzMTU4MzM4LCJleHAiOjE2MDMxNjAxMzh9.Yfe0XkIJnKpffTgzPeGv9bjkan3CnSjshsDtX4r2KMM")
+                //.header("X-AUTH-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvb28iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAzMTU4MzM4LCJleHAiOjE2MDMxNjAxMzh9.Yfe0XkIJnKpffTgzPeGv9bjkan3CnSjshsDtX4r2KMM")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk())
                 .andDo(print());
