@@ -17,7 +17,6 @@ public class CategoryService {
 
     public CategorysResponse getCategories(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
         return categoryCoreService.getCategories();
     }
 
