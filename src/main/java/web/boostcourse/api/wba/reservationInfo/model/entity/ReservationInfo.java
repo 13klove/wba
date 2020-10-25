@@ -7,13 +7,13 @@ import lombok.NoArgsConstructor;
 import web.boostcourse.api.wba.config.baseDate.BaseDate;
 import web.boostcourse.api.wba.displayInfo.model.entity.DisplayInfo;
 import web.boostcourse.api.wba.product.model.entity.Product;
-import web.boostcourse.api.wba.reservationUserComment.model.entity.ReservationUserComment;
 import web.boostcourse.api.wba.reservationInfoPrice.model.entity.ReservationInfoPrice;
+import web.boostcourse.api.wba.reservationUserComment.model.entity.ReservationUserComment;
 import web.boostcourse.api.wba.reservationUserCommentImage.model.entity.ReservationUserCommentImage;
 import web.boostcourse.api.wba.user.model.entity.User;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -27,7 +27,7 @@ public class ReservationInfo extends BaseDate {
     @Column(name = "id")
     private Long id;
 
-    private LocalDateTime reservationDate;
+    private LocalDate reservationDate;
 
     private Boolean cancelFlag;
 
@@ -49,7 +49,50 @@ public class ReservationInfo extends BaseDate {
     @OneToMany(mappedBy = "reservationInfo")
     private List<ReservationUserCommentImage> reservationUserCommentImages = Lists.newArrayList();
 
-    @OneToMany(mappedBy = "reservationInfo")
+    @OneToMany(mappedBy = "reservationInfo", cascade = CascadeType.ALL)
     private List<ReservationInfoPrice> reservationInfoPrices = Lists.newArrayList();
 
+    public ReservationInfo(LocalDate reservationDate, Boolean cancelFlag) {
+        this.reservationDate = reservationDate;
+        this.cancelFlag = cancelFlag;
+    }
+
+    public ReservationInfo(LocalDate reservationDate) {
+        this.reservationDate = reservationDate;
+    }
+
+    public static ReservationInfo createReservationInfo(LocalDate reservationDate, Product product, DisplayInfo displayInfo, User user) {
+        ReservationInfo reservationInfo = new ReservationInfo(reservationDate);
+        reservationInfo.defaultSet();
+        reservationInfo.changeProduct(product);
+        reservationInfo.changeDisplayInfo(displayInfo);
+        reservationInfo.changeUser(user);
+        return reservationInfo;
+    }
+
+    public void changeProduct(Product product){
+        this.product = product;
+        product.addReservationInfo(this);
+    }
+
+    public void changeDisplayInfo(DisplayInfo displayInfo){
+        this.displayInfo = displayInfo;
+        displayInfo.addReservationInfo(this);
+    }
+
+    public void changeUser(User user){
+        this.user = user;
+        user.addReservationInfo(this);
+    }
+
+    private void defaultSet() {
+        this.cancelFlag = false;
+    }
+
+    public void addReservationInfoPrice(List<ReservationInfoPrice> reservationInfoPrices) {
+        reservationInfoPrices.forEach(a->{
+            this.reservationInfoPrices.add(a);
+            a.changeReservationInfo(this);
+        });
+    }
 }

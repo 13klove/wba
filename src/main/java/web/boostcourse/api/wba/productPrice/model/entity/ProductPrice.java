@@ -35,7 +35,11 @@ public class ProductPrice extends BaseDate {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @OneToMany(mappedBy = "productPrice")
+    @OneToMany(mappedBy = "productPrice", cascade = CascadeType.ALL)
     private List<ReservationInfoPrice> reservationInfoPrices = Lists.newArrayList();
+
+    public void addReservationInfoPrice(ReservationInfoPrice reservationInfoPrice) {
+        reservationInfoPrices.add(reservationInfoPrice);
+    }
 
 }

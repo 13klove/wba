@@ -47,4 +47,7 @@ public class DisplayInfo extends BaseDate {
     @OneToMany(mappedBy = "displayInfo")
     private List<ReservationInfo> reservationInfos = Lists.newArrayList();
 
+    public void addReservationInfo(ReservationInfo reservationInfo) {
+        this.reservationInfos.add(reservationInfo);
+    }
 }

@@ -96,4 +96,7 @@ public class User extends BaseDate implements UserDetails {
         return true;
     }
 
+    public void addReservationInfo(ReservationInfo reservationInfo) {
+        this.reservationInfos.add(reservationInfo);
+    }
 }

@@ -36,4 +36,5 @@ public class ProductPriceResponse {
         this.createDate = createDate;
         this.modifyDate = modifyDate;
     }
+
 }
