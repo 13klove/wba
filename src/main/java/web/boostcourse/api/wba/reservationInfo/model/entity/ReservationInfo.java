@@ -71,7 +71,7 @@ public class ReservationInfo extends BaseDate {
     }
 
     public void cancelReservation(){
-        this.cancelFlag = false;
+        this.cancelFlag = true;
     }
 
     public void changeProduct(Product product){

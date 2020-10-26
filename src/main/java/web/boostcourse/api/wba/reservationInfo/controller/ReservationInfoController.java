@@ -29,7 +29,6 @@ public class ReservationInfoController {
 
     @PutMapping("/reservationInfos")
     public Map<String, String> cancelReservation(@RequestBody CancelReservationParam cancelReservationParam){
-        System.out.println("@@@@@@@@@@@@@!!!!!!!!!!!!!!!!"+cancelReservationParam);
         return reservationInfoService.cancelReservation(cancelReservationParam);
     }
 

@@ -40,7 +40,7 @@ public class ReservationInfoControllerTest {
         String param = objectMapper.writeValueAsString(build);
         //X-AUTH-TOKEN
         mockMvc.perform(post("/api/reservationInfos").content(param).contentType(MediaType.APPLICATION_JSON_VALUE)
-                .header("X-AUTH-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvb28iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAzNjk3MzYyLCJleHAiOjE2MDM2OTkxNjJ9.JFwwjWZ5dCLB3bD_t-9PqXdCbQTGVfC80333ZhjKmdk"))
+                .header("X-AUTH-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvb28iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAzNjk5MTkyLCJleHAiOjE2MDM3MDA5OTJ9.oOk-RvK_FP-psfdXFg1h8aSCiSk8UIaGN5lNN-GWnzY"))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
@@ -59,7 +59,7 @@ public class ReservationInfoControllerTest {
         String param = objectMapper.writeValueAsString(build);
 
         mockMvc.perform(put("/api/reservationInfos").content(param).contentType(MediaType.APPLICATION_JSON_VALUE)
-                    .header("X-AUTH-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvb28iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAzNjk5MTkyLCJleHAiOjE2MDM3MDA5OTJ9.oOk-RvK_FP-psfdXFg1h8aSCiSk8UIaGN5lNN-GWnzY"))
+                    .header("X-AUTH-TOKEN", "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJvb28iLCJyb2xlcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjAzNzAxMDg5LCJleHAiOjE2MDM3MDI4ODl9.dz0S19YYuiPecKljz9rnCNrofQvrlU2OR3a3AuOjwV0"))
                 .andExpect(status().isOk())
                 .andDo(print());
 
