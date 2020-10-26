@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import web.boostcourse.api.wba.productPrice.model.dto.request.ProductPriceRequest;
-import web.boostcourse.api.wba.reservationInfo.model.dto.request.ReservationInfosRequest;
-import web.boostcourse.api.wba.reservationInfo.model.dto.response.ReservationInfoDtoResponse;
+import web.boostcourse.api.wba.reservationInfo.model.dto.request.RservationInfosParam;
+import web.boostcourse.api.wba.reservationInfo.model.entity.ReservationInfo;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class ReservationInfoCoreServiceTest {
 
     @Test
     public void reservationInfosTest(){
-        ReservationInfosRequest.RservationInfos build = ReservationInfosRequest.RservationInfos
+        RservationInfosParam build = RservationInfosParam
                 .builder()
                 .productId(1l)
                 .displayInfoId(1l)
@@ -27,8 +27,8 @@ public class ReservationInfoCoreServiceTest {
                 .prices(Arrays.asList(ProductPriceRequest.ProductPriceParam.builder().count(2).productPriceId(3l).build()))
                 .build();
 
-        ReservationInfoDtoResponse.ReservationInfoResponse reservationInfoResponse = reservationInfoCoreService.reservationInfos(build);
-        System.out.println(reservationInfoResponse);
+        ReservationInfo reservationInfo = reservationInfoCoreService.reservationInfos(build);
+        System.out.println(reservationInfo);
     }
 
 }
