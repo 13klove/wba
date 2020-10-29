@@ -8,6 +8,8 @@ import web.boostcourse.api.wba.user.model.dto.request.UserSearch;
 import web.boostcourse.api.wba.user.model.dto.response.UserResponse;
 import web.boostcourse.api.wba.user.service.core.UserCoreService;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Service
 @Transactional(readOnly = true)
 public class UserService {
@@ -20,8 +22,8 @@ public class UserService {
         return userCoreService.join(userParam);
     }
 
-    public String login(UserSearch userSearch){
-        return userCoreService.login(userSearch);
+    public void login(UserSearch userSearch, HttpServletResponse response){
+        userCoreService.login(userSearch, response);
     }
 
 }

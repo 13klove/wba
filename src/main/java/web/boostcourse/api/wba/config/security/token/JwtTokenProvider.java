@@ -19,6 +19,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
+//https://velog.io/@tlatldms/%EC%84%9C%EB%B2%84%EA%B0%9C%EB%B0%9C%EC%BA%A0%ED%94%84-Refresh-JWT-%EA%B5%AC%ED%98%84
 public class JwtTokenProvider {
 
     private String secretKey = "webfirewood";
@@ -61,7 +62,8 @@ public class JwtTokenProvider {
 
     //request header choice token value ("x-auth-token":"token")
     public String resolveToken(HttpServletRequest request){
-        return request.getHeader("X-AUTH-TOKEN");
+        //return request.getHeader("X-AUTH-TOKEN");
+        return request.getHeader("Authorization");
     }
 
     //token valid check

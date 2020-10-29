@@ -9,6 +9,8 @@ import web.boostcourse.api.wba.user.model.dto.request.UserSearch;
 import web.boostcourse.api.wba.user.model.dto.response.UserResponse;
 import web.boostcourse.api.wba.user.service.UserService;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 public class UserController {
 
@@ -21,6 +23,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody UserSearch userSearch){ return userService.login(userSearch); }
+    public void login(HttpServletResponse response, @RequestBody UserSearch userSearch){
+        userService.login(userSearch, response);
+    }
 
 }
