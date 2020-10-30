@@ -27,4 +27,9 @@ public class UserController {
         userService.login(userSearch, response);
     }
 
+    @PostMapping("/reissuance")
+    public void reissuance(HttpServletResponse response, @RequestBody UserSearch userSearch){
+        userService.reissuanceToken(userSearch, response);
+    }
+
 }

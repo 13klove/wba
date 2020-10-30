@@ -26,4 +26,8 @@ public class UserService {
         userCoreService.login(userSearch, response);
     }
 
+    public void reissuanceToken(UserSearch userSearch, HttpServletResponse response){
+        userCoreService.getToken(userSearch, response);
+    }
+
 }

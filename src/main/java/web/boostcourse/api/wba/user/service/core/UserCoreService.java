@@ -45,7 +45,17 @@ public class UserCoreService {
 
         if(!passwordEncoder.matches(userSearch.getPassword(), user.getPassword())) throw new IllegalArgumentException("잘못된 비밀번호입니다.");
 
+        jwtTokenProvider.createRefreshToken(user.getEmail(), roles);
+
         JwtHeader token = JwtHeader.builder().token(jwtTokenProvider.createToken(user.getEmail(), roles)).build();
+        response.setHeader(token.getKey(), token.getJwtHeader());
+    }
+
+    public void getToken(UserSearch userSearch, HttpServletResponse response){
+        User user = userRepository.findUserByEmail(userSearch.getEmail()).orElseThrow(()->new IllegalArgumentException("없는 이메일입니다."));
+        List<String> roles =  user.getUserRoles().stream().map(a->a.getRoleName().toString()).collect(Collectors.toList());
+
+        JwtHeader token = JwtHeader.builder().token(jwtTokenProvider.getToken(user.getEmail(), roles)).build();
         response.setHeader(token.getKey(), token.getJwtHeader());
     }
 
